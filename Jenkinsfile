@@ -1,35 +1,10 @@
 // Declarative //
-// pipeline {
-//     agent any
+pipeline {
+    agent any
 
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 echo 'Build'
-//                 // sh 'make'
-//             }
-//         }
-
-//         stage('Test') {
-//             steps {
-//                 echo 'Test'
-//                 // sh 'make check'
-//                 // junit 'reports/**/*.xml'
-//             }
-//         }
-
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploy'
-//                 // sh 'make publish'
-//             }
-//         }
-//     }
-// }
-
-// Script //
-node {
-    stage('Build'){
+    stages {
+        stage('Build') {
+            steps {
                 echo 'Build'
                 echo 'Params:'
                 echo "${env.BRANCH_NAME}"
@@ -55,18 +30,41 @@ node {
                 echo "${env.BUILD_URL}"
                 echo "${env.JOB_URL}"
                 // sh 'make'
-    }
+            }
+        }
 
-    stage('Test'){
-        echo 'Test'
-        // sh 'make check'
-        // junit 'reports/**/*.xml'
-    }
+        stage('Test') {
+            steps {
+                echo 'Test'
+                // sh 'make check'
+                // junit 'reports/**/*.xml'
+            }
+        }
 
-    stage('Deploy'){
-        echo 'Deploy'
-        // sh 'make publish'
-    }    
+        stage('Deploy') {
+            steps {
+                echo 'Deploy'
+                // sh 'make publish'
+            }
+        }
+    }
 }
 
+// Script //
+// node {
+//     stage('Build'){
+//                 echo 'Build'
+//                 // sh 'make'
+//     }
 
+//     stage('Test'){
+//         echo 'Test'
+//         // sh 'make check'
+//         // junit 'reports/**/*.xml'
+//     }
+
+//     stage('Deploy'){
+//         echo 'Deploy'
+//         // sh 'make publish'
+//     }    
+// }
