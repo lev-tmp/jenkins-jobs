@@ -30,15 +30,18 @@
 // Script //
 node {
     stage('Build'){
-        sh 'make'
+                echo 'Build'
+                // sh 'make'
     }
 
     stage('Test'){
-        sh 'make check'
-        junit 'reports/**/*.xml'
+        echo 'Test'
+        // sh 'make check'
+        // junit 'reports/**/*.xml'
     }
 
     stage('Deploy'){
-        sh 'make publish'
+        echo 'Deploy'
+        // sh 'make publish'
     }    
 }
