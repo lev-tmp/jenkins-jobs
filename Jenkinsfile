@@ -1,6 +1,9 @@
 // Declarative //
 pipeline {
     agent any
+    environment {
+        CC = 'clang'
+    }
 
     stages {
         stage('Build') {
@@ -31,6 +34,16 @@ pipeline {
                 echo "JOB_URL: ${env.JOB_URL}"
                 // sh 'make'
             }
+        }
+
+        stage('Example') {
+            environment {
+                DEBUG_FLAG = '-g'
+            }
+            steps {
+                sh 'printenv'
+            }
+
         }
 
         stage('Test') {
